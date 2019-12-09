@@ -20,11 +20,6 @@ const menuButton = document.querySelector('.button.headerb');
 menuButton.addEventListener('click', ()=>{
     var menu = document.querySelector('.page-navigation');
     menu.classList.toggle('hamburgerMenu');
- /* if (menu.style.display === "block") {
-    menu.style.display = "none";
-  } else {
-    menu.style.display = "block";
-  }*/
 });
 
 
