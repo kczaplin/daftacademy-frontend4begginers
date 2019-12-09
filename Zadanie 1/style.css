@@ -1,0 +1,559 @@
+/*
+Przeglądarki internetowe nadają znacznikom HTML wartości początkowe,
+które się różnią w zależności od producenta (np. Chrome, Firefox, Opera, Internet Explorer, Microsoft Edge).
+Dlatego popularną praktyką jest tworzenie tzw. resetów,
+czyli plików CSS zawierających reguły, które nadpisują te wartości,
+aby były one jednolite niezalenie od przeglądarki.
+
+Więcej na ten temat: https://cssreset.com/what-is-a-css-reset/
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image:url("./images/background.svg") ;
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+     
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ZAGADNIENIE PONADPROGRAMOWE
+
+Rekomendowany zestaw właściwości, które pozwalają na ukrycie tekstu w taki sposób,
+że będzie niewidoczny do standardowego użytkownika, a czytniki ekranowe wciąż będą go czytać.
+
+Więcej na ten temat: https://webaim.org/techniques/css/invisiblecontent/
+*/
+.screen-reader-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/*
+Sekcja pomocnicza, aby zwizualizować pozycje głównych bloków strony. Będzie usunięta w następnych krokach.
+*/
+/*
+.page-header {
+    background-color: #ffb1b1;
+}
+
+.page-content {
+    background-color: #b0ffb0;
+}
+
+.page-footer {
+    background-color: #7ba3ff;
+}
+
+.content-section {
+    background-color: #ca9aca;
+}
+.content-section:nth-child(odd) {
+    background-color: #e69fe6;
+}
+*/
+/*
+Koniec sekcji pomocniczej
+*/
+
+/*
+Ustawiając sekcje nagłówka i stopki w pozycji 'fixed' sprawiamy,
+że niezależnie od pozycji paska przewijania elementy te będą znajdowały się
+w tej samej pozycji względem okna przeglądarki.
+Natomiast pozycję tę ustawiamy za pomocą parametrów 'top', 'bottom', 'right', 'left'.
+*/
+.page-header {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+}
+
+/*
+Lewy margines ustawiony na kontenerze z główną zawartością strony sprawia,
+że nie będzie ona nachodzić na nagłówek i stopkę niezależnie od pozycji paska przewijania.
+Na projekcie graficznym sekcja menu ma szerokość około 170px i jest oddalona od krawędzi ekranu
+o 50px, więc można założyć, że 220px marginesu będzie wartością stosunkowo bezpieczną.
+Z kolei spady (padding) nadane na kontener wyznaczają minimalną odległość, na jaką będzie oddalona
+treść strony od otaczających ją granic kontenera (wartość "0 10%" jest
+skrótem od padding-top: 0, padding-bottom: 0, padding-left: 10%, padding-right: 10%).
+Właściwość "text-align: right" przykleja zawartość do prawej strony
+(oddziałuje na elementy, które są elementami inline'owymi, np. tekst, znaczniki <a>, <span> czy elementy z nadanym stylem "display: inline-block").
+*/
+.page-content {
+    margin-left: 220px;
+    padding: 0 10%;
+    text-align: right;
+}
+
+/*
+Projekt graficzny zakłada, że każda sekcja strony będzie wypełniać całą wysokość okna przeglądarki
+lub więcej, jeśli zawartość danej sekcji jest wyższa. Dlatego świetnym rozwiązaniem
+będzie użycie jednostki "vh", która oznacza 1% wysokości okna przeglądarki z właściwością "min-height",
+która wymusza wysokość elementu na zadaną wartość lub wyższą.
+*/
+.content-section {
+    min-height: 100vh;
+}
+/* ################################### TEXT ########################### */
+h2{
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size:28px;
+    letter-spacing: 4.5px;
+    float: right;
+    color: #ef008e;
+    opacity:1.0;
+    padding-top:60px;
+
+}
+
+h3{
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size:15px;
+    letter-spacing: 3.8px;
+    color: #ccc8ff;
+    opacity:0.8;
+
+}
+.band-members__name{
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size:15px;
+    letter-spacing: 3.8px;
+    color: #ccc8ff;
+    opacity:0.0;
+}
+
+.band-members__desc{
+    font-family:"Open Sans", sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    letter-spacing: 3.5px;
+    color: #ccc8ff;
+    opacity: 0.0;
+
+}
+
+
+
+.concerts__date{
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size:15px;
+    letter-spacing: 3.8px;
+    color: #ccc8ff;
+    opacity:0.8;
+
+
+}
+
+.concerts__location{
+    font-family:"Open Sans", sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #ccc8ff;
+    opacity: 0.5;
+}
+
+
+.form__label{
+
+    font-family:"Open Sans", sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #ccc8ff;
+    opacity: 0.5;
+}
+
+
+/* ############################## MENU - HEADER #############################3 */
+a.menu:link{
+    font-family:"Open Sans", sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 6.7px;
+    color: #ef008e;
+    opacity:0.6;
+    text-decoration:none;
+}
+
+
+.page-navigation__items{
+    line-height: 25px;
+}
+
+a.menu:disabled{
+    font-family:"Open Sans", sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 6.7px;
+    color: #ef008e;
+    opacity:0.2;
+    text-decoration:none;
+}
+
+a.menu:visited{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 6.7px;
+    color: #ef008e;
+    opacity:0.4;
+    text-decoration:none;
+}
+a.menu:hover, a.menu:active{
+    
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 6.5px;
+    color: #ef008e;
+    opacity:0.8;
+    text-decoration:none;
+}
+
+a.menu:focus{
+    
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 6.5px;
+    color: #ef008e;
+    opacity:1.0;
+    text-decoration:none;
+}
+
+
+/* ################### BUTTONS ##################*/
+
+.button{
+    background-color:rgba(204,200,255,0.1);
+    border:0px;
+    font-family: "Open Sans", sans-serif;
+    font-weight:semi-bold;
+    font-size:12px;
+    letter-spacing:1.6px;
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: #ccc8ff;
+    opacity:0.8;
+    
+}
+.button:visited{
+    font-family: "Open Sans", sans-serif;
+    font-weight:semi-bold;
+    font-size:12px;
+    letter-spacing:1.6px;
+    border-radius: 5px;
+    background-color:rgba(204,200,255,0.2);
+    color: #ccc8ff;
+    opacity:0.5;
+
+   
+} 
+
+.button:hover, .button:active{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+    font-weight:regular;
+    font-size:12px;
+    letter-spacing: 1.6px;
+    border-radius: 5px;
+    background-color:rgba(204,200,255,0.35);
+    color: #ccc8ff;
+    opacity:0.8;
+}
+.button:disabled {
+    font-family: "Open Sans", sans-serif;
+    font-weight:semi-bold;
+    font-size:12px;
+    letter-spacing:1.6px;
+    border-radius: 5px;
+    background-color:rgba(204,200,255,0.1);
+    color: #ccc8ff;
+    opacity:0.5;
+}
+.button:focus {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+    font-weight:semi-bold;
+    font-size:12px;
+    letter-spacing:1.6px;
+    border-radius: 5px;
+    background-color:rgba(204,200,255,0.3);
+    color: #ccc8ff;
+    opacity:0.8;
+    outline:0;
+    border:0.5px solid white;
+
+
+
+}
+
+.form__input{
+    background-color:rgba(204,200,255,0.1);
+    border:0px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+/*########################## section - home ####################### */
+
+
+.band-members__image{
+    width:200px; /*200*/
+    height:277px; /*277*/
+    opacity:0.4;
+}
+
+.band-members{
+
+    display:grid;
+   grid-template-columns: repeat(4,minmax(200px, 1fr));
+   align-content:center;
+    padding-top:25%;
+    padding-right:3%;
+    padding-left:3%;
+    padding-bottom:25%;
+
+  }
+
+
+
+.band-members__image:hover ~ .band-members__desc{
+    opacity:0.1;
+}
+.band-members__image:hover ~ .band-members__name{
+    opacity:0.8;
+}
+
+.band-members__image:hover{
+    opacity:1.0;
+}
+
+
+
+  /* ############################################## about space ################################ */
+  .about-section{
+  
+      display:grid;
+      justify-content:end;
+      padding-right:50px;
+      row-gap:20px;
+     /* padding-top:30px;*/
+     
+  }
+
+  .about_image{
+      width: 700px;
+      height:466px;
+      justify-items:end;
+      border-top: 3px solid #ef008e;
+  }
+
+.about-section__desc-details{
+    font-family:"Open Sans", sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #ccc8ff;
+    opacity: 0.5;
+   
+    text-align:left;
+
+}
+
+.about-section__desc-header{
+  text-align:center;
+}
+
+.about-section__desc{
+    background-color:#25072e;
+    position:relative;
+    bottom: 150px;
+    right:150px;
+    width:310px;
+    background-clip:padding-box;
+    padding: 10px 10px 5px 20px;
+    border-bottom: 3px solid #ef008e;
+
+}
+/* ########################################### Concert ################################# */
+.concerts__image{
+    max-width:250px;
+    height:auto;
+    border-top: 3px solid #ef008e;
+}
+
+#concerts.content-section{
+   padding-right:50px;
+    display:grid;
+    grid-template-rows:150px 600px;
+    justify-content:end;
+  /*  padding-top:20px;*/
+
+}
+
+
+.concerts{
+    display:grid;
+    row-gap:30px;
+    column-gap:30px;
+    grid-template:repeat(2,1fr) / repeat(2,1fr);
+    justify-items:end;
+   
+}
+
+/* ########################## VIDEO ######################## */
+#video.content-section{
+    display:grid;
+    grid-template-rows: 110px 450px;
+    justify-content:end; 
+    padding-right:50px;
+    row-gap:80px;
+   
+}
+.video{
+    border-top:3px solid #ef008e;
+    
+}
+
+/* ############################# GALERY ################################### */
+
+.gallery{
+    display:grid;
+    grid-template:repeat(3,160px) / repeat(3,242px); /* 173 260 teraz 160 242*/
+    row-gap: 10px;
+    column-gap:10px;
+}
+
+.gallery__image{
+
+    border-top:3px solid #ef008e;
+    width:242px;/*200*/
+    height:160px;/*130*/
+}
+
+#photos.content-section{
+
+   display:grid;
+   grid-template-rows:150px 480px;
+   justify-content:end;
+   padding-right:50px;
+
+}
+
+
+
+/*################################## kotakt ######################## */
+
+#contact.content-section{
+  
+    padding-right:50px;
+    display:grid;
+    grid-template-rows:150px,400px;
+
+   
+
+}
+
+.contact-content{
+    display:grid;
+    grid-template:repeat(2,1fr) / repeat(2,1fr);
+    justify-items:start;
+    padding-left:20px;
+}
+
+.gallery__image_contact{
+    width: 464px;
+    height:309px;
+
+}
+
+.form{
+    display:flex;
+    flex-direction:column;
+    align-items:start;
+}
+
+.form__field{
+    display:flex;
+    flex-direction: column;
+    padding-top:7px;
+    align-items:start;
+}
+
+.address{
+    font-family:"Open Sans", sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #ccc8ff;
+    opacity: 0.5;
+    text-align:left;
+    display:flex;
+    align-items:center;
+    padding-left:30px;
+   
+}
+
+
+.social-links__link:link img{
+  
+    opacity:0.5;
+  }
+
+
+.social-links__link:disabled img{
+    
+    opacity:0.2;
+}
+
+.social-links__link:visited img{
+    
+    opacity:0.4;
+
+}
+
+
+.social-links__link:hover img, .social-links__link:active img{
+  
+    opacity:0.8;
+}
+
+
+.social-links__link:focus img{
+  
+    opacity:1.0;
+}
